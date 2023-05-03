@@ -19,19 +19,7 @@ class Program
 
         selfDeliveryControl.CheckBox = true;
 
-        Console.WriteLine(new string('-', 30));
+        Console.WriteLine("---------------------------------------------");
         orderPage.ShowEnabledControls();
-
-        /*
-        Console shows next:
-
-        Lab_2.Controls.DateControl
-        Lab_2.Controls.SelfDeliveryControl
-        Lab_2.Controls.AnotherPersonControl
-        Lab_2.Controls.DeliveryInformation
-        Lab_2.Controls.TimeControl
-        ------------------------------
-        Lab_2.Controls.SelfDeliveryControl
-        */
     }
 }
