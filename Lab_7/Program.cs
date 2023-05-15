@@ -6,25 +6,17 @@ class Program
 {
     static void Main(string[] args)
     {
-        IRepository mongoDBRepository = RepositoryManager.GetRepository(nameof(MongoDBRepository));
-        IRepository postgreSQLRepository = RepositoryManager.GetRepository(nameof(PostgreSQLRepository));
+        var mongoDBRepository = RepositoryManager.GetRepository(nameof(NoSQLRepository));
+        var postgreSQLRepository = RepositoryManager.GetRepository(nameof(SQLRepository));
 
-        // Checking the correctness of the generated types
-        if (mongoDBRepository is MongoDBRepository)
+        if (mongoDBRepository is NoSQLRepository)
         {
-            Console.WriteLine("mongoDBRepository is MongoDBRepository type");
+            Console.WriteLine("NoSQLRepository is NoSQLRepository type");
         }
 
-        if (postgreSQLRepository is PostgreSQLRepository)
+        if (postgreSQLRepository is SQLRepository)
         {
-            Console.WriteLine("postgreSQLRepository is PostgreSQLRepository type");
+            Console.WriteLine("SQLRepository is SQLRepository type");
         }
-
-        /*
-        Console shows next:
-
-        mongoDBRepository is MongoDBRepository type
-        postgreSQLRepository is PostgreSQLRepository type
-        */
     }
 }

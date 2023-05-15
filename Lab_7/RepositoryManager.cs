@@ -7,12 +7,12 @@ namespace Lab_7
     {
         public static IRepository GetRepository(string name)
         {
-            switch (name)
+            return name switch
             {
-                case nameof(MongoDBRepository): return MongoDBRepository.GetInstance();
-                case nameof(PostgreSQLRepository): return PostgreSQLRepository.GetInstance();
-                default: throw new NotImplementedException();
-            }
+                nameof(NoSQLRepository) => NoSQLRepository.GetInstance(),
+                nameof(SQLRepository) => SQLRepository.GetInstance(),
+                _ => throw new NotImplementedException(),
+            };
         }
     }
 }
