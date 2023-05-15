@@ -6,10 +6,13 @@ namespace Lab_5.Handlers
     public abstract class Handler
     {
         protected abstract IRepository GetRepository();
+        protected abstract Response CreateResponse(Item item);
         protected abstract string GetValidationError();
         protected abstract bool ValidateData(Item oldItem, Item newItem);
         protected abstract void ProcessIfFailed(Item item);
-        protected abstract Response CreateResponse(Item item);
+        protected abstract void PreValidation(Item item);
+        protected abstract void Initialization();
+        protected abstract void ReleaseConnection();
 
         public Response Handle(Item item)
         {
@@ -32,18 +35,11 @@ namespace Lab_5.Handlers
                 };
             }
 
-            Item newItem = repository.Update(item);
+            var newItem = repository.Update(item);
 
             ReleaseConnection();
 
             return CreateResponse(newItem);
         }
-
-        // Hooks for future use
-        protected abstract void PreValidation(Item item);
-
-        protected abstract void Initialization();
-
-        protected abstract void ReleaseConnection();
     }
 }

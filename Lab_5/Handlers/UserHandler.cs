@@ -14,14 +14,10 @@ public class UserHandler : Handler
     }
 
     protected override IRepository GetRepository()
-    {
-        return _repository;
-    }
+    => _repository;
 
     protected override string GetValidationError()
-    {
-        return _validationError;
-    }
+    => _validationError;
 
     protected override bool ValidateData(Item oldItem, Item newItem)
     {
@@ -46,11 +42,8 @@ public class UserHandler : Handler
     }
 
     protected override Response CreateResponse(Item item)
-    {
-        return new Response { Status = "Updated", Code = 200 };
-    }
+    => new Response { Status = "Updated", Code = 200 };
 
-    // Hooks for future use
     protected override void PreValidation(Item item)
     {
     }

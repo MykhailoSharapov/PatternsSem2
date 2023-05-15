@@ -12,32 +12,19 @@ public class ProductHandler : Handler
         _repository = repository;
     }
 
-    protected override IRepository GetRepository()
-    {
-        return _repository;
-    }
+    protected override IRepository GetRepository() => _repository;
 
-    protected override string GetValidationError()
-    {
-        return string.Empty;
-    }
+    protected override string GetValidationError() => "";
 
-    protected override bool ValidateData(Item oldItem, Item newItem)
-    {
-        return true;
-    }
+    protected override bool ValidateData(Item oldItem, Item newItem) => true;
 
     protected override void ProcessIfFailed(Item item)
     {
         Console.WriteLine("Send message to manager");
     }
 
-    protected override Response CreateResponse(Item item)
-    {
-        return new Response { Status = "Updated", Code = 200 };
-    }
+    protected override Response CreateResponse(Item item) => new Response { Status = "Updated", Code = 200 };
 
-    // Hooks for future use
     protected override void PreValidation(Item item)
     {
     }
